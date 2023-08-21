@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<html>
+
+<head>
+    <title>Form 3</title>
+</head>
+
+<body>
+    <h2>Demographic Survey</h2>
+
+<form method="post">
+  <label for="age">1. How old are you?</label><br>
+  <input type="number" id="age" name="age"><br><br>
+
+  <label for="country">2. Where do you live now?</label><br>
+  <select id="country" name="country">
+        <option value="latvia">Latvia</option>
+        <option value="lithuania">Lithuania</option>
+        <option value="estonia">Estonia</option>
+        <option value="ukraine">Ukraine</option>
+        <option value="poland">Poland</option>
+        <option value="turkey">Turkey</option>
+        <option value="other">Other</option>
+  </select>
+
+  <p>3. What gender do you identify as?</p>
+  <input type="radio" id="female" name="gender" value="Female">
+  <label for="female">Female</label>
+  <input type="radio" id="male" name="gender" value="Male">
+  <label for="male">Male</label>
+  <input type="radio" id="not" name="gender" value="Not">
+  <label for="not">Prefer not to say</label>
+  <input type="radio" id="other" name="gender" value="Other">
+  <label for="other">Other</label><br>
+
+  <p>4. You are the owner of:</p>
+  <input type="checkbox" id="thing1" name="thing[]" value="House">
+  <label for="thing1">a house</label><br>
+  <input type="checkbox" id="thing2" name="thing[]" value="Flat">
+  <label for="thing2">a flat</label><br>
+  <input type="checkbox" id="thing3" name="thing[]" value="Car">
+  <label for="thing3">a car</label><br>
+  <input type="checkbox" id="thing4" name="thing[]" value="Boat">
+  <label for="thing4">a boat</label><br>
+  <input type="checkbox" id="thing5" name="thing[]" value="Bike">
+  <label for="thing5">a bike</label><br><br>
+
+  <label for="dream">5. What are you dreaming about?</label><br>
+  <textarea name="dream" rows="5" cols="50"></textarea><br>
+
+  <input type="submit" value="SUBMIT">
+  <input type="reset" value="RESET">
+</form>
+</body>
+
+</html>
