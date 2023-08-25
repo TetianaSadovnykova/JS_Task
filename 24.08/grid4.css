@@ -1,0 +1,20 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 120px 120px 120px auto 120px 120px 120px;
+    grid-template-rows: 10% 10% 15% 20% 15% auto;
+    gap: 10px 20px;
+    background-color: Grey;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+  }
+
+.grid-container > div {
+    background-color: White;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+  }
+
+h1 {text-align: center; }

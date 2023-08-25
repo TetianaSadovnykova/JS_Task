@@ -1,0 +1,18 @@
+.flex-container {
+    display: flex;
+    background-color: Blue;
+    justify-content: center;
+    align-items: center;
+    height: 300px
+}
+
+.flex-container > div {
+    background-color: White;
+    color: Red;
+    margin: 5px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+h1 {text-align: center; }
