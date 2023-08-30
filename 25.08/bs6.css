@@ -1,0 +1,12 @@
+.alert {
+    font-size: 26px;
+    color: White;
+}
+
+.alert-success {
+    background-color: Green;
+}
+
+.alert-danger {
+    background-color: Red;
+}
