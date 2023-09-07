@@ -1,5 +1,5 @@
 const a = +prompt("Please, enter the first number", "");
-const b = +prompt("Please, enter the second namber", "");
+const b = +prompt("Please, enter the second number", "");
 
 (isNaN(a) || isNaN(b)) && console.log("I need only numbers");
 
