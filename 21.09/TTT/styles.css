@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    color: Blue;
+}
+
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid Blue;
+    font-size: 36px;
+    line-height: 100px;
+}
+
+p {
+    font-size: 36px;
+    font-weight: bold;
+    color: Red;
+}
