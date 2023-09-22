@@ -11,9 +11,11 @@ function startGame() {
         timer--;
         document.getElementById("countdown").innerText = timer;
 
-        if (timer == -1) {
+        if (timer === 0) {
             document.getElementById("click").disabled = true;
-            alert("Game over! Your managed to do " + count + " clicks! It's great!!!");
+            setTimeout (function() {
+                alert("Game over! Your managed to do " + count + " clicks! It's great!!!");
+            }, 0);
         }
         else
             setTimeout(countdown, 1000);
