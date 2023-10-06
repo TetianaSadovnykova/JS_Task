@@ -12,10 +12,8 @@ $(".number").on("click", function () {
 $(".operator").on("click", function () {
     const op = $(this).text();
     if (currentInput !== "") {
-        if (prevInput !== "") {
-            currentInput = calculate(prevInput, currentInput, operator);
-            updateScreen(currentInput);
-        }
+        currentInput = calculate(prevInput, currentInput, operator);
+        updateScreen(currentInput);
         prevInput = currentInput;
         currentInput = "";
     }
@@ -23,32 +21,32 @@ $(".operator").on("click", function () {
 });
 
 $("#equals").on("click", function () {
-    if (prevInput !== "" && currentInput !== "") {
-        currentInput = calculate(prevInput, currentInput, operator);
-        updateScreen(currentInput);
-        prevInput = "";
-        operator = "";
+    operator = "";
     }
-});
+);
 
 $("#clear").on("click", function () {
     currentInput = "";
     prevInput = "";
     operator = "";
-    updateScreen(currentInput);
+    updateScreen("0");
 });
 
 $("#clearEntry").on("click", function () {
     currentInput = "";
-    updateScreen(currentInput);
+    updateScreen(prevInput);
 });
 
 $("#backspace").on("click", function () {
     currentInput = currentInput.slice(0, -1);
-    updateScreen(currentInput);
+    if (currentInput == "")
+        updateScreen("0");
+    else
+        updateScreen(currentInput);
 });
 
 $("#decimal").on("click", function () {
+    const digit = $(this).text();
     if (!currentInput.includes(".")) {
         currentInput += ".";
         updateScreen(currentInput);
@@ -56,40 +54,38 @@ $("#decimal").on("click", function () {
 });
 
 $("#percentage").on("click", function () {
-    if (currentInput !== "") {
-        currentInput = (+(currentInput) / 100).toString();
-        updateScreen(currentInput);
-    }
+    currentInput = +(currentInput * prevInput / 100);
+    updateScreen(currentInput);
 });
 
 $("#back").on("click", function () {
     if (currentInput !== "0") {
-        currentInput = (1 / +(currentInput)).toString();
+        currentInput = (1 / +(currentInput));
         updateScreen(currentInput);
     } else {
-        currentInput = "Error";
+        currentInput = "Error: div by 0";
         updateScreen(currentInput);
     }
 });
 
 $("#square").on("click", function () {
-    currentInput = (Math.pow(+(currentInput), 2)).toString();
+    currentInput *= currentInput;
     updateScreen(currentInput);
 });
 
 $("#squareRoot").on("click", function () {
-    if (+(currentInput) >= 0) {
-        currentInput = (Math.sqrt(+(currentInput))).toString();
+    if ((currentInput) >= 0) {
+        currentInput = (Math.sqrt(currentInput));
         updateScreen(currentInput);
     } else {
-        currentInput = "Error";
+        currentInput = "Error: root";
         updateScreen(currentInput);
     }
 });
 
 $("#negate").on("click", function () {
     if (currentInput !== "0") {
-        currentInput = (-parseFloat(currentInput)).toString();
+        currentInput = -(parseFloat(currentInput));
         updateScreen(currentInput);
     }
 });
@@ -97,23 +93,41 @@ $("#negate").on("click", function () {
 function calculate(num1, num2, op) {
     num1 = +(num1);
     num2 = +(num2);
+    let result;
+
     switch (op) {
         case "+":
-            return (num1 + num2).toString();
+            result = num1 + num2;
+            break;
         case "-":
-            return (num1 - num2).toString();
+            result = num1 - num2;
+            break;
         case "×":
-            return (num1 * num2).toString();
+            result = num1 * num2;
+            break;
         case "÷":
             if (num2 == 0) {
-                return "Error";
+                return "Error: div by 0";
             }
-            return (num1 / num2).toString();
+            result = num1 / num2;
+            break;
         default:
-            return num2.toString();
+            result = num2;
     }
+
+    return result;
 }
 
 function updateScreen(text) {
-    output.text(text);
+    const max = 99999999999999;
+
+    if (+text > max) {
+        output.text("Error: digits limit");
+    }
+    else {
+        output.text(text);
+    }
 }
+
+
+
